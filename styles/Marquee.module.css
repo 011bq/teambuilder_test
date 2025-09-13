@@ -1,13 +1,3 @@
-.anim {
-    position: absolute;
-    will-change: transform;
-    animation: marquee 15s linear infinite ;
-}
-
-.anim:hover {
-    animation-play-state: paused;
-    
-}
 /* Marquee animation - right to left */
 @keyframes marquee {
   0% {
@@ -16,4 +6,16 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.anim {
+  display: flex;
+  gap: 1rem; /* spacing between products */
+  animation: marquee 20s linear infinite;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
 }
