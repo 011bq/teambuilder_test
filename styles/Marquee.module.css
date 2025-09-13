@@ -17,15 +17,3 @@
     transform: translateX(-100%);
   }
 }
-
-.anim {
-  display: flex;
-  gap: 1rem; /* spacing between products */
-  animation: marquee 20s linear infinite;
-}
-
-.marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 20s linear infinite;
-}
