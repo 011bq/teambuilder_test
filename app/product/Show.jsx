@@ -146,8 +146,10 @@ const Show = ({ product, products }) => {
               </button>
 
               <button
-                className=" text-center hover:scale-105 transition shadow-md cursor-pointer
+                className="text-white text-center hover:scale-105 transition shadow-md cursor-pointer
                  bg-primary text-xl px-8 py-2  text-highLight ring-1 ring-primary"
+                onClick={() => onAdd(product, qty)}
+
               >
                 Buy Now
               </button>
