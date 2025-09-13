@@ -11,6 +11,16 @@ interface HomeProps {
 }
 
 const Home = ({ products, bannerData }: HomeProps) => {
+  const [sortOrder, setSortOrder] = useState<'low-to-high' | 'high-to-low'>('low-to-high');
+
+  // Sort products based on selected order
+  const sortedProducts = [...products].sort((a, b) => {
+    if (sortOrder === 'low-to-high') {
+      return a.price - b.price;
+    } else {
+      return b.price - a.price;
+    }
+  });
 
   return (
     <main>
@@ -24,17 +34,28 @@ const Home = ({ products, bannerData }: HomeProps) => {
         >
           Best Selling Headphones
         </h1>
-        {/* <p className=" text-base text-secondary">Best in the Market</p> */}
+        
+        {/* Sort Dropdown */}
+        <div className="mt-4">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as 'low-to-high' | 'high-to-low')}
+            className="px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+          </select>
+        </div>
       </section>
 
       {/* === SHOW PRODUCTS  */}
       <section
-        className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4
+        className=" grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3
        lg:mx-20 overflow-hidden
       "
       >
         {/* === MAP PRODUCTS  */}
-        {products?.map((products: ProductsTypes) => {
+        {sortedProducts?.map((products: ProductsTypes) => {
           return <Products key={products._id} products={products} />;
         })}
       </section>
